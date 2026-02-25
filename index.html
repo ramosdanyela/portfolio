@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Danyela Ramos — Software Engineer specializing in React, Next.js, TypeScript and Python/Django." />
+  <meta name="author" content="Danyela Ramos" />
+  <title>Danyela Ramos | Software Engineer</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Custom cursor (desktop only) -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#hero" class="logo">
+        <span class="logo-text">DR</span><span class="logo-dot">.</span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about"      data-i18n="nav.about">About</a></li>
+        <li><a href="#skills"     data-i18n="nav.skills">Skills</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+        <li><a href="#projects"   data-i18n="nav.projects">Projects</a></li>
+        <li><a href="#education"  data-i18n="nav.education">Education</a></li>
+        <li><a href="#contact"    data-i18n="nav.contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
+          <span class="lang-opt" id="lang-en">EN</span>
+          <span class="lang-sep">/</span>
+          <span class="lang-opt" id="lang-pt">PT</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-glow"></div>
+      <div class="hero-grid"></div>
+    </div>
+
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <p class="hero-greeting" data-i18n="hero.greeting">Hi, I'm</p>
+        <h1 class="hero-name">Danyela Ramos</h1>
+        <div class="hero-title-row">
+          <span class="hero-role" data-i18n="hero.role">Software Engineer</span>
+          <span class="hero-blink">|</span>
+        </div>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">
+          Building modern web applications with React, Next.js &amp; Python
+        </p>
+        <div class="hero-tags">
+          <span class="tag">React.js</span>
+          <span class="tag">Next.js</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Tailwind</span>
+          <span class="tag">Python</span>
+          <span class="tag">Django</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary" data-i18n="hero.cta_work">See my work</a>
+          <a href="#contact"  class="btn btn-secondary" data-i18n="hero.cta_contact">Contact me</a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://github.com/ramosdanyela" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/ramosdanyela" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="mailto:ramos.danyela@gmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Decorative code card -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="code-card">
+          <div class="code-header">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span class="code-filename">danyela.ts</span>
+          </div>
+          <pre class="code-body"><code><span class="ck">const</span> <span class="cv">developer</span> = {
+  <span class="cp">name</span>: <span class="cs">"Danyela Ramos"</span>,
+  <span class="cp">role</span>: <span class="cs">"Software Engineer"</span>,
+  <span class="cp">stack</span>: [
+    <span class="cs">"React"</span>, <span class="cs">"Next.js"</span>,
+    <span class="cs">"TypeScript"</span>, <span class="cs">"Python"</span>
+  ],
+  <span class="cp">location</span>: <span class="cs">"Rio de Janeiro 🇧🇷"</span>,
+  <span class="cp">available</span>: <span class="ck">true</span>,
+};</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <a href="#about" class="scroll-hint" aria-label="Scroll down">
+      <div class="scroll-arrow"></div>
+    </a>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-num">01.</span>
+        <h2 class="section-title" data-i18n="about.title">About Me</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text" data-animate>
+          <p data-i18n="about.p1">
+            I'm a Software Engineer passionate about tech, business, and people. With a background
+            in Customer Success leadership, I bring a unique perspective to building products —
+            I understand both the technical craft and the human impact behind every feature.
+          </p>
+          <p data-i18n="about.p2">
+            Currently working at <strong>Adian</strong>, building a B2B research platform,
+            and at <strong>Outlier</strong>, training AI models by reviewing and improving
+            front-end code. My stack focuses on React, Next.js, TypeScript, Tailwind, and Python/Django.
+          </p>
+          <p data-i18n="about.p3">
+            When I'm not coding, you'll find me on my mountain bike, playing drums,
+            or planning my next trip somewhere new.
+          </p>
+          <div class="about-meta">
+            <span class="meta-item"><i class="fas fa-map-marker-alt"></i> Rio de Janeiro, Brasil</span>
+            <span class="meta-item"><i class="fas fa-language"></i> <span data-i18n="about.langs">PT • EN • DE (basic)</span></span>
+            <span class="meta-item"><i class="fas fa-drum"></i> <span data-i18n="about.hobbies">Drums · Mountain Bike · Travel</span></span>
+          </div>
+        </div>
+
+        <div class="about-stats">
+          <div class="stat-card" data-animate>
+            <span class="stat-num">2+</span>
+            <span class="stat-label" data-i18n="about.stat_dev">Years in Dev</span>
+          </div>
+          <div class="stat-card" data-animate>
+            <span class="stat-num">10+</span>
+            <span class="stat-label" data-i18n="about.stat_proj">Projects Built</span>
+          </div>
+          <div class="stat-card" data-animate>
+            <span class="stat-num">3</span>
+            <span class="stat-label" data-i18n="about.stat_lang">Languages</span>
+          </div>
+          <div class="stat-card" data-animate>
+            <span class="stat-num">∞</span>
+            <span class="stat-label" data-i18n="about.stat_passion">Passion</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SKILLS ===================== -->
+  <section class="section section-alt" id="skills">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-num">02.</span>
+        <h2 class="section-title" data-i18n="skills.title">Tech Stack</h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="section-sub" data-i18n="skills.sub">Technologies I work with</p>
+
+      <div class="skills-grid">
+        <div class="skill-cat" data-animate>
+          <h3 class="skill-cat-title">
+            <i class="fas fa-desktop"></i>
+            <span data-i18n="skills.frontend">Frontend</span>
+          </h3>
+          <div class="skill-tags">
+            <span class="skill-tag"><i class="fab fa-react"></i> React.js</span>
+            <span class="skill-tag">Next.js</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Tailwind CSS</span>
+            <span class="skill-tag">Material UI</span>
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+          </div>
+        </div>
+
+        <div class="skill-cat" data-animate>
+          <h3 class="skill-cat-title">
+            <i class="fas fa-server"></i>
+            <span data-i18n="skills.backend">Backend</span>
+          </h3>
+          <div class="skill-tags">
+            <span class="skill-tag"><i class="fab fa-node-js"></i> Node.js</span>
+            <span class="skill-tag">Express.js</span>
+            <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+            <span class="skill-tag">Django</span>
+            <span class="skill-tag">Django REST</span>
+            <span class="skill-tag">REST APIs</span>
+          </div>
+        </div>
+
+        <div class="skill-cat" data-animate>
+          <h3 class="skill-cat-title">
+            <i class="fas fa-database"></i>
+            <span data-i18n="skills.databases">Databases</span>
+          </h3>
+          <div class="skill-tags">
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MongoDB</span>
+          </div>
+        </div>
+
+        <div class="skill-cat" data-animate>
+          <h3 class="skill-cat-title">
+            <i class="fas fa-tools"></i>
+            <span data-i18n="skills.tools">Tools &amp; Practices</span>
+          </h3>
+          <div class="skill-tags">
+            <span class="skill-tag"><i class="fab fa-git-alt"></i> Git</span>
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Jira</span>
+            <span class="skill-tag">CI/CD</span>
+            <span class="skill-tag">Scrum</span>
+            <span class="skill-tag">Kanban</span>
+            <span class="skill-tag">UI/UX</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIENCE ===================== -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-num">03.</span>
+        <h2 class="section-title" data-i18n="exp.title">Experience</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="timeline">
+
+        <!-- Adian -->
+        <div class="tl-item" data-animate>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div>
+                <h3 class="tl-role">Software Engineer</h3>
+                <p class="tl-company">Adian</p>
+              </div>
+              <span class="tl-period">
+                <span data-i18n="exp.jul">Jul</span> 2025 –
+                <span data-i18n="exp.present">Present</span>
+              </span>
+            </div>
+            <ul class="tl-list">
+              <li data-i18n="exp.adian1">Designed and developed core features of a B2B research/insights platform using React, Next.js, TypeScript, Tailwind, and Material UI.</li>
+              <li data-i18n="exp.adian2">Built and maintained backend services with Node.js/Express and Django, integrating PostgreSQL and MongoDB.</li>
+              <li data-i18n="exp.adian3">Applied design system principles — reusable UI components, tokens and interaction patterns — ensuring platform consistency.</li>
+              <li data-i18n="exp.adian4">Delivered end-to-end product improvements from UX prototypes to production-ready features, increasing usability and stability.</li>
+            </ul>
+            <div class="tl-tags">
+              <span>React</span><span>Next.js</span><span>TypeScript</span>
+              <span>Django</span><span>PostgreSQL</span><span>Material UI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Outlier -->
+        <div class="tl-item" data-animate>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div>
+                <h3 class="tl-role">Frontend Software Engineer – AI Training</h3>
+                <p class="tl-company">Outlier</p>
+              </div>
+              <span class="tl-period">
+                <span data-i18n="exp.apr">Apr</span> 2025 –
+                <span data-i18n="exp.present">Present</span>
+              </span>
+            </div>
+            <ul class="tl-list">
+              <li data-i18n="exp.out1">Created, tested, and refactored front-end code (React, Next.js, Tailwind) generated by AI models to substantially improve output quality.</li>
+              <li data-i18n="exp.out2">Contributed to Reinforcement Learning from Human Feedback (RLHF) projects with state-of-the-art large language models.</li>
+              <li data-i18n="exp.out3">T3 Coding Expert — LATAM Coders.</li>
+            </ul>
+            <div class="tl-tags">
+              <span>React</span><span>Next.js</span><span>Tailwind</span><span>AI / RLHF</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Independent -->
+        <div class="tl-item" data-animate>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div>
+                <h3 class="tl-role">Full Stack Software Engineer</h3>
+                <p class="tl-company" data-i18n="exp.indie_co">Independent App Developer</p>
+              </div>
+              <span class="tl-period">
+                <span data-i18n="exp.aug">Aug</span> 2023 –
+                <span data-i18n="exp.oct">Oct</span> 2025
+              </span>
+            </div>
+            <ul class="tl-list">
+              <li data-i18n="exp.ind1">Designed and coded dynamic, responsive web applications using React.js, Next.js, and Tailwind CSS.</li>
+              <li data-i18n="exp.ind2">Developed RESTful APIs with Node.js and Express, integrating MongoDB for efficient data storage.</li>
+              <li data-i18n="exp.ind3">Applied Scrum and Kanban practices; implemented responsive UI/UX with Figma and Tailwind across multiple devices.</li>
+            </ul>
+            <div class="tl-tags">
+              <span>React</span><span>Node.js</span><span>MongoDB</span><span>Tailwind</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJECTS ===================== -->
+  <section class="section section-alt" id="projects">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-num">04.</span>
+        <h2 class="section-title" data-i18n="proj.title">Projects</h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="section-sub" data-i18n="proj.sub">Some things I've built</p>
+
+      <div class="projects-grid" id="projects-grid">
+        <div class="proj-loader">
+          <div class="spinner"></div>
+        </div>
+      </div>
+
+      <div class="proj-cta">
+        <a href="https://github.com/ramosdanyela" target="_blank" rel="noopener" class="btn btn-outline">
+          <i class="fab fa-github"></i>
+          <span data-i18n="proj.cta">View all on GitHub</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EDUCATION ===================== -->
+  <section class="section" id="education">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-num">05.</span>
+        <h2 class="section-title" data-i18n="edu.title">Education &amp; Certifications</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="edu-grid">
+
+        <!-- Education column -->
+        <div class="edu-col">
+          <h3 class="edu-col-title">
+            <i class="fas fa-graduation-cap"></i>
+            <span data-i18n="edu.edu">Education</span>
+          </h3>
+
+          <div class="edu-card" data-animate>
+            <div class="edu-icon"><i class="fas fa-university"></i></div>
+            <div>
+              <h4>Universidade Estadual de Londrina</h4>
+              <p data-i18n="edu.uel">Psychology &amp; Human Resources Development</p>
+              <span class="edu-year">2010 – 2014</span>
+            </div>
+          </div>
+
+          <div class="edu-card" data-animate>
+            <div class="edu-icon"><i class="fas fa-chart-bar"></i></div>
+            <div>
+              <h4>Cappra Institute for Data Science</h4>
+              <p>Data Science</p>
+              <span class="edu-year">2019</span>
+            </div>
+          </div>
+
+          <div class="edu-card" data-animate>
+            <div class="edu-icon"><i class="fas fa-box"></i></div>
+            <div>
+              <h4>Cursos PM3</h4>
+              <p data-i18n="edu.pm3">Product Management</p>
+              <span class="edu-year">2021</span>
+            </div>
+          </div>
+
+          <div class="edu-card" data-animate>
+            <div class="edu-icon"><i class="fas fa-cogs"></i></div>
+            <div>
+              <h4>Escola EDTI</h4>
+              <p>Green Belt – Lean Six Sigma</p>
+              <span class="edu-year">2017</span>
+            </div>
+          </div>
+
+          <div class="edu-card" data-animate>
+            <div class="edu-icon"><i class="fas fa-brain"></i></div>
+            <div>
+              <h4>Instituto Par</h4>
+              <p data-i18n="edu.par">Behavioral Management of Organizations</p>
+              <span class="edu-year">2022</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications column -->
+        <div class="edu-col">
+          <h3 class="edu-col-title">
+            <i class="fas fa-certificate"></i>
+            <span data-i18n="edu.cert">Certifications</span>
+          </h3>
+
+          <div class="cert-list">
+            <div class="cert-item" data-animate>
+              <i class="fas fa-check-circle"></i>
+              <span data-i18n="cert.agile">Agile Methodology – Scrum &amp; Kanban</span>
+            </div>
+            <div class="cert-item" data-animate>
+              <i class="fas fa-check-circle"></i>
+              <span data-i18n="cert.cs">Customer Success Certification</span>
+            </div>
+            <div class="cert-item" data-animate>
+              <i class="fas fa-check-circle"></i>
+              <span data-i18n="cert.uiux">Certificate in UI/UX Design</span>
+            </div>
+            <div class="cert-item" data-animate>
+              <i class="fas fa-check-circle"></i>
+              <span data-i18n="cert.en">Duolingo English – Advanced</span>
+            </div>
+            <div class="cert-item" data-animate>
+              <i class="fas fa-check-circle"></i>
+              <span data-i18n="cert.hr">HR.Rocks – Performance Management</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="section section-alt" id="contact">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-num">06.</span>
+        <h2 class="section-title" data-i18n="contact.title">Get In Touch</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="contact-wrap">
+        <p class="contact-text" data-i18n="contact.text">
+          I'm always open to new opportunities, collaborations, or just a friendly chat about tech.
+          Feel free to reach out!
+        </p>
+
+        <div class="contact-links">
+          <a href="mailto:ramos.danyela@gmail.com" class="contact-link" data-animate>
+            <div class="c-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <p class="c-label" data-i18n="contact.email">Email</p>
+              <p class="c-value">ramos.danyela@gmail.com</p>
+            </div>
+          </a>
+          <a href="https://github.com/ramosdanyela" target="_blank" rel="noopener" class="contact-link" data-animate>
+            <div class="c-icon"><i class="fab fa-github"></i></div>
+            <div>
+              <p class="c-label">GitHub</p>
+              <p class="c-value">github.com/ramosdanyela</p>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/ramosdanyela" target="_blank" rel="noopener" class="contact-link" data-animate>
+            <div class="c-icon"><i class="fab fa-linkedin"></i></div>
+            <div>
+              <p class="c-label">LinkedIn</p>
+              <p class="c-value">linkedin.com/in/ramosdanyela</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>
+        <span data-i18n="footer.made">Made with</span>
+        <i class="fas fa-heart"></i>
+        <span data-i18n="footer.by">by Danyela Ramos</span>
+      </p>
+      <p class="footer-copy">© 2025 Danyela Ramos — <span data-i18n="footer.rights">All rights reserved.</span></p>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scroll-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
