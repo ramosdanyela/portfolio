@@ -210,19 +210,38 @@ function applyLang(newLang) {
     }
   });
 
-  document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-  document.getElementById('lang-pt').classList.toggle('active', lang === 'pt');
+  const langEn = document.getElementById('lang-en');
+  const langPt = document.getElementById('lang-pt');
+  if (langEn) langEn.classList.toggle('active', lang === 'en');
+  if (langPt) langPt.classList.toggle('active', lang === 'pt');
 
   // Re-render projects with updated "no description" text
   if (cachedRepos) renderProjects(cachedRepos);
 }
 
-document.getElementById('lang-toggle').addEventListener('click', () => {
-  applyLang(lang === 'en' ? 'pt' : 'en');
-});
+function init() {
+  const langToggle = document.getElementById('lang-toggle');
+  const langEn = document.getElementById('lang-en');
+  const langPt = document.getElementById('lang-pt');
+  if (!langToggle || !langEn || !langPt) return;
 
-// Boot
-applyLang(lang);
+  langToggle.addEventListener('click', () => {
+    applyLang(lang === 'en' ? 'pt' : 'en');
+  });
+}
+
+// Boot when DOM is ready (script may be in <head> after Vite build)
+function boot() {
+  init();
+  applyLang(lang);
+  loadProjects();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', boot);
+} else {
+  boot();
+}
 
 /* ──────────────────────────────────────────
    NAVBAR — scroll & mobile
@@ -232,22 +251,26 @@ const hamburger = document.getElementById('hamburger');
 const navLinks  = document.getElementById('nav-links');
 const scrollBtn = document.getElementById('scroll-top');
 
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
-  scrollBtn.classList.toggle('visible', window.scrollY > 500);
-}, { passive: true });
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+    if (scrollBtn) scrollBtn.classList.toggle('visible', window.scrollY > 500);
+  }, { passive: true });
+}
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  navLinks.classList.toggle('open');
-});
-
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    navLinks.classList.remove('open');
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
   });
-});
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+}
 
 /* ──────────────────────────────────────────
    ACTIVE NAV LINK on scroll
@@ -255,6 +278,7 @@ navLinks.querySelectorAll('a').forEach(link => {
 const sections = Array.from(document.querySelectorAll('section[id]'));
 
 function updateActiveNav() {
+  if (!navLinks) return;
   const scrollY = window.scrollY + 110;
   sections.forEach(sec => {
     const top  = sec.offsetTop;
@@ -279,7 +303,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+if (scrollBtn) scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 /* ──────────────────────────────────────────
    SCROLL ANIMATIONS (Intersection Observer)
@@ -308,32 +332,34 @@ document.querySelectorAll('[data-animate]').forEach(el => animObserver.observe(e
 if (window.matchMedia('(pointer: fine)').matches) {
   const cur = document.getElementById('cursor');
   const fol = document.getElementById('cursor-follower');
-  let mx = 0, my = 0, fx = 0, fy = 0;
+  if (cur && fol) {
+    let mx = 0, my = 0, fx = 0, fy = 0;
 
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cur.style.left = mx + 'px';
-    cur.style.top  = my + 'px';
-  });
-
-  (function animFol() {
-    fx += (mx - fx) * 0.13;
-    fy += (my - fy) * 0.13;
-    fol.style.left = fx + 'px';
-    fol.style.top  = fy + 'px';
-    requestAnimationFrame(animFol);
-  })();
-
-  document.querySelectorAll('a, button, .proj-card, .skill-cat, .stat-card').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cur.style.width = '18px'; cur.style.height = '18px';
-      fol.style.opacity = '0.75';
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cur.style.left = mx + 'px';
+      cur.style.top  = my + 'px';
     });
-    el.addEventListener('mouseleave', () => {
-      cur.style.width = '10px'; cur.style.height = '10px';
-      fol.style.opacity = '0.45';
+
+    (function animFol() {
+      fx += (mx - fx) * 0.13;
+      fy += (my - fy) * 0.13;
+      fol.style.left = fx + 'px';
+      fol.style.top  = fy + 'px';
+      requestAnimationFrame(animFol);
+    })();
+
+    document.querySelectorAll('a, button, .proj-card, .skill-cat, .stat-card').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cur.style.width = '18px'; cur.style.height = '18px';
+        fol.style.opacity = '0.75';
+      });
+      el.addEventListener('mouseleave', () => {
+        cur.style.width = '10px'; cur.style.height = '10px';
+        fol.style.opacity = '0.45';
+      });
     });
-  });
+  }
 }
 
 /* ──────────────────────────────────────────
@@ -353,6 +379,7 @@ const LANG_COLORS = {
 
 function renderProjects(repos) {
   const grid = document.getElementById('projects-grid');
+  if (!grid) return;
   if (!repos || !repos.length) {
     grid.innerHTML = `
       <div style="grid-column:1/-1;text-align:center;padding:2.5rem;color:var(--muted)">
@@ -402,10 +429,26 @@ function renderProjects(repos) {
 
 async function loadProjects() {
   const grid = document.getElementById('projects-grid');
+  if (!grid) return;
+
+  const showFallback = () => {
+    cachedRepos = null;
+    grid.innerHTML = `
+      <div style="grid-column:1/-1;text-align:center;padding:2.5rem;color:var(--muted)">
+        <p>See my projects on
+          <a href="https://github.com/ramosdanyela" target="_blank" rel="noopener"
+             style="color:var(--accent)">GitHub ↗</a>
+        </p>
+      </div>`;
+  };
+
+  const timeout = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), ms));
+
   try {
-    const res = await fetch(
-      'https://api.github.com/users/ramosdanyela/repos?sort=updated&per_page=30'
-    );
+    const res = await Promise.race([
+      fetch('https://api.github.com/users/ramosdanyela/repos?sort=updated&per_page=30'),
+      timeout(12000)
+    ]);
     if (!res.ok) throw new Error(`GitHub API ${res.status}`);
 
     const all  = await res.json();
@@ -421,15 +464,6 @@ async function loadProjects() {
     renderProjects(repos);
   } catch (err) {
     console.warn('GitHub API error:', err.message);
-    cachedRepos = null;
-    grid.innerHTML = `
-      <div style="grid-column:1/-1;text-align:center;padding:2.5rem;color:var(--muted)">
-        <p>See my projects on
-          <a href="https://github.com/ramosdanyela" target="_blank" rel="noopener"
-             style="color:var(--accent)">GitHub ↗</a>
-        </p>
-      </div>`;
+    showFallback();
   }
 }
-
-loadProjects();
