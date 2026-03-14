@@ -25,9 +25,9 @@ const i18n = {
 
     /* About */
     'about.title':   'About Me',
-    'about.p1':      "I'm a Software Engineer passionate about tech, business, and people. With a background in Customer Success leadership, I bring a unique perspective to building products — I understand both the technical craft and the human impact behind every feature.",
-    'about.p2':      "Currently working at <strong>Adian</strong>, building a B2B research platform, and at <strong>Outlier</strong>, training AI models by reviewing and improving front-end code. My stack focuses on React, Next.js, TypeScript, Tailwind, and Python/Django.",
-    'about.p3':      "When I'm not coding, you'll find me on my mountain bike, playing drums, or planning my next trip somewhere new.",
+    'about.p1':      "I'm a Software Engineer passionate about technology, business, and people. With over 7 years of experience in the tech industry — much of it working with B2B software companies and multiple clients — I try to bring a unique perspective of business and client-side to building code.",
+    'about.p2':      "Today, I have dedicated most of my time on custom software projects, helping companies design and build tailored software solutions. My stack focuses on React, Next.js, TypeScript, Tailwind, and Python/Django.",
+    'about.p3':      "When I'm not coding, you'll probably find me on my mountain bike, playing drums, or planning my next trip somewhere new.",
     'about.langs':   'PT • EN • DE (basic)',
     'about.hobbies': 'Drums · Mountain Bike · Travel',
     'about.stat_dev':    'Years in Dev',
@@ -85,10 +85,9 @@ const i18n = {
     'contact.title': 'Get In Touch',
     'contact.text':  "I'm always open to new opportunities, collaborations, or just a friendly chat about tech. Feel free to reach out!",
     'contact.email': 'Email',
+    'contact.whatsapp': 'WhatsApp',
 
     /* Footer */
-    'footer.made':   'Made with',
-    'footer.by':     'by Danyela Ramos',
     'footer.rights': 'All rights reserved.',
   },
 
@@ -110,9 +109,9 @@ const i18n = {
 
     /* About */
     'about.title':   'Sobre Mim',
-    'about.p1':      "Sou Engenheira de Software apaixonada por tecnologia, negócios e pessoas. Com experiência em liderança de Customer Success, trago uma perspectiva única para a construção de produtos — entendo tanto o lado técnico quanto o impacto humano por trás de cada funcionalidade.",
-    'about.p2':      "Atualmente trabalho na <strong>Adian</strong>, construindo uma plataforma B2B de research, e na <strong>Outlier</strong>, treinando modelos de IA revisando e melhorando código front-end. Meu stack é focado em React, Next.js, TypeScript, Tailwind e Python/Django.",
-    'about.p3':      "Quando não estou codando, você me encontra pedalando, tocando bateria ou planejando minha próxima viagem.",
+    'about.p1':      "Sou Engenheira de Software apaixonada por tecnologia, negócios e pessoas. Com mais de 7 anos de experiência no setor de tecnologia — grande parte deles trabalhando com empresas de software B2B e múltiplos clientes — busco trazer uma perspectiva única de negócios e visão do cliente para o desenvolvimento de software.",
+    'about.p2':      "Hoje, dedico a maior parte do meu tempo a projetos de software sob medida, ajudando empresas a projetar e construir soluções personalizadas. Meu stack é focado em React, Next.js, TypeScript, Tailwind e Python/Django.",
+    'about.p3':      "Quando não estou codando, é bem provável que você me encontre na minha mountain bike, tocando bateria ou planejando minha próxima viagem para algum lugar novo.",
     'about.langs':   'PT • EN • DE (básico)',
     'about.hobbies': 'Bateria · Mountain Bike · Viagens',
     'about.stat_dev':    'Anos em Dev',
@@ -170,10 +169,9 @@ const i18n = {
     'contact.title': 'Entre em Contato',
     'contact.text':  'Estou sempre aberta a novas oportunidades, colaborações ou apenas uma conversa sobre tecnologia. Não hesite em entrar em contato!',
     'contact.email': 'E-mail',
+    'contact.whatsapp': 'WhatsApp',
 
     /* Footer */
-    'footer.made':   'Feito com',
-    'footer.by':     'por Danyela Ramos',
     'footer.rights': 'Todos os direitos reservados.',
   },
 };
@@ -189,7 +187,75 @@ function detectLang() {
 }
 
 let lang = detectLang();
-let cachedRepos = null;
+
+const LANG_COLORS = {
+  JavaScript:       '#f1e05a',
+  TypeScript:       '#3178c6',
+  Python:           '#3572A5',
+  HTML:             '#e34c26',
+  CSS:              '#563d7c',
+  'Jupyter Notebook':'#DA5B0B',
+  Shell:            '#89e051',
+  Vue:              '#41b883',
+  Svelte:           '#ff3e00',
+};
+
+const PROJECTS = [
+  {
+    name:              'Portal Tintas',
+    description:       'Institutional website for a paint supply store in Ribas do Rio Pardo, MS. Features brand showcases, a painting tips blog, and WhatsApp scheduling integration.',
+    language:          'TypeScript',
+    html_url:          'https://github.com/ramosdanyela/portal-tintas',
+    homepage:          'https://portal-tintas.vercel.app',
+    stargazers_count:  0,
+    image:             '/img/portal-tintas.png',
+  },
+  {
+    name:              'Lavanderia Rio Pardo',
+    description:       'Professional website for an industrial laundry service with service packages, pickup & delivery info, same-day options, and a WhatsApp-based contact flow.',
+    language:          'TypeScript',
+    html_url:          'https://github.com/ramosdanyela/lavanderiariopardo',
+    homepage:          'https://lavanderiariopardo.vercel.app',
+    stargazers_count:  0,
+    image:             '/img/lavanderia.png',
+  },
+  {
+    name:              'Finance Planner',
+    description:       'Full-stack expense tracker with JWT authentication, transaction categorization, advanced filters, and interactive Chart.js charts for monthly spending analysis.',
+    language:          'JavaScript',
+    html_url:          'https://github.com/ramosdanyela/financeplanner',
+    homepage:          '',
+    stargazers_count:  0,
+    image:             '/img/financeplanner.png',
+  },
+  {
+    name:              'AI2C Survey Dashboard',
+    description:       'JSON-driven survey results visualizer with dynamic section rendering, Recharts charts (bar, line, NPS, sentiment), filterable question lists, and A4 PDF export.',
+    language:          'TypeScript',
+    html_url:          'https://github.com/ramosdanyela/ai2c-survey-results',
+    homepage:          '',
+    stargazers_count:  0,
+    image:             '/img/ai2c.png',
+  },
+  {
+    name:              'Quizz Ribas',
+    description:       'Interactive multi-page trivia quiz about Ribas do Rio Pardo, featuring smooth transitions between cover, quiz, and results screens with score tracking.',
+    language:          'JavaScript',
+    html_url:          'https://github.com/ramosdanyela/quizzribas',
+    homepage:          '',
+    stargazers_count:  0,
+    image:             '/img/quizzribas.png',
+  },
+  {
+    name:              'Portfolio Website',
+    description:       'This bilingual (EN/PT) single-page portfolio — dark theme, scroll-triggered animations, custom cursor, and GitHub API integration. Built with vanilla JS and Vite.',
+    language:          'JavaScript',
+    html_url:          'https://github.com/ramosdanyela/portfolio',
+    homepage:          '',
+    stargazers_count:  0,
+    image:             '/img/portfolio.png',
+  },
+];
 
 function t(key) {
   return (i18n[lang] && i18n[lang][key]) || key;
@@ -216,7 +282,7 @@ function applyLang(newLang) {
   if (langPt) langPt.classList.toggle('active', lang === 'pt');
 
   // Re-render projects with updated "no description" text
-  if (cachedRepos) renderProjects(cachedRepos);
+  renderProjects(PROJECTS);
 }
 
 function init() {
@@ -234,7 +300,7 @@ function init() {
 function boot() {
   init();
   applyLang(lang);
-  loadProjects();
+  renderProjects(PROJECTS);
 }
 
 if (document.readyState === 'loading') {
@@ -365,17 +431,6 @@ if (window.matchMedia('(pointer: fine)').matches) {
 /* ──────────────────────────────────────────
    GITHUB PROJECTS
    ────────────────────────────────────────── */
-const LANG_COLORS = {
-  JavaScript:       '#f1e05a',
-  TypeScript:       '#3178c6',
-  Python:           '#3572A5',
-  HTML:             '#e34c26',
-  CSS:              '#563d7c',
-  'Jupyter Notebook':'#DA5B0B',
-  Shell:            '#89e051',
-  Vue:              '#41b883',
-  Svelte:           '#ff3e00',
-};
 
 function renderProjects(repos) {
   const grid = document.getElementById('projects-grid');
@@ -395,7 +450,8 @@ function renderProjects(repos) {
     const color = LANG_COLORS[r.language] || 'var(--muted)';
     const desc  = r.description || t('proj.no_desc');
     return `
-      <a class="proj-card" href="${r.html_url}" target="_blank" rel="noopener">
+      <div class="proj-card" onclick="window.open('${r.html_url}','_blank','noopener')" style="cursor:pointer">
+        ${r.image ? `<div class="proj-thumb"><img src="${r.image}" alt="${r.name}" loading="lazy"></div>` : ''}
         <div class="proj-top">
           <div class="proj-icon"><i class="fas fa-folder-open"></i></div>
           <div class="proj-ext-links">
@@ -423,47 +479,6 @@ function renderProjects(repos) {
             <i class="far fa-star"></i> ${r.stargazers_count}
           </span>` : ''}
         </div>
-      </a>`;
-  }).join('');
-}
-
-async function loadProjects() {
-  const grid = document.getElementById('projects-grid');
-  if (!grid) return;
-
-  const showFallback = () => {
-    cachedRepos = null;
-    grid.innerHTML = `
-      <div style="grid-column:1/-1;text-align:center;padding:2.5rem;color:var(--muted)">
-        <p>See my projects on
-          <a href="https://github.com/ramosdanyela" target="_blank" rel="noopener"
-             style="color:var(--accent)">GitHub ↗</a>
-        </p>
       </div>`;
-  };
-
-  const timeout = (ms) => new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), ms));
-
-  try {
-    const res = await Promise.race([
-      fetch('https://api.github.com/users/ramosdanyela/repos?sort=updated&per_page=30'),
-      timeout(12000)
-    ]);
-    if (!res.ok) throw new Error(`GitHub API ${res.status}`);
-
-    const all  = await res.json();
-    const repos = all
-      .filter(r => !r.fork)
-      .sort((a, b) =>
-        b.stargazers_count - a.stargazers_count ||
-        new Date(b.updated_at) - new Date(a.updated_at)
-      )
-      .slice(0, 6);
-
-    cachedRepos = repos;
-    renderProjects(repos);
-  } catch (err) {
-    console.warn('GitHub API error:', err.message);
-    showFallback();
-  }
+  }).join('');
 }
