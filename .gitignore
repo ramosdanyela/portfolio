@@ -32,6 +32,10 @@ coverage/
 # vscode
 .vscode/
 
+# claude
+.claude/
+
 # arquivos temporários
 *.tmp
 *.swp
+.vercel
